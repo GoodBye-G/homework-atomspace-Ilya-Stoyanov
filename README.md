@@ -1,0 +1,1 @@
+# homework-atomspace-Ilya-Stoyanov
