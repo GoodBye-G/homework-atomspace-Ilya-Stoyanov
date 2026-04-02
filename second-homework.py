@@ -1,4 +1,4 @@
-#Завдання 1 -Iнiцiали
+# #Завдання 1 -Iнiцiали
 
 # name=str(input("Введiть своє iм`я ты прiзвище(Name Surname)"))
 # initials=[]
@@ -93,22 +93,22 @@
 
 
 # #Завдання 5-Обробка рядка з числами
-# numbers=input("Введiть значення для суми всiх вказених чисел(вводити через пробiл): ")
-# numbers_list=numbers.split()
+numbers=input("Введiть значення для суми всiх вказених чисел(вводити через пробiл): ")
+numbers_list=numbers.split()
 
 
 
-# element=0; sum=0; count=0
-# for num in range(len(numbers_list)):    #Ми проходимось по кожному числу(члену списку)
-#     element=numbers_list[num]
-#     if element.isdigit():               #Якщо число є int то йдеме далi
-#         sum+=int(element)               #Це сумма чисел якi доходять до цього моменту в циклi 
-#         count+=1                        #count нам потрiбен щоб в суму не входило бiльше трьох членiв
-#         if count==3:                    #3 члена --> кiнець
-#             break        
-#     else:                               #На той випадок якщо користувач вiв не число
-#         print(f"{element}- НЕ є числом")
+element=0; sum=0; count=0
+for num in range(len(numbers_list)):    #Ми проходимось по кожному числу(члену списку)
+    element=numbers_list[num]
+    if element.isdigit():               #Якщо число є int то йдеме далi
+        sum+=int(element)               #Це сумма чисел якi доходять до цього моменту в циклi 
+        count+=1                        #count нам потрiбен щоб в суму не входило бiльше трьох членiв
+        if count==3:                    #3 члена --> кiнець
+            break        
+    else:                               #На той випадок якщо користувач вiв не число
+        print(f"{element}- НЕ є числом")
 
-# print(f"Сума перших трьох членiв{sum}")
+print(f"Сума перших трьох членiв{sum}")
 
 
