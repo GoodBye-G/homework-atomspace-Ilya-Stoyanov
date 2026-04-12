@@ -1,51 +1,59 @@
 #calculator
 
-stop_signal=0
-while stop_signal != -90:
-        first_num_for_operation = int(input("Введiть перше число для опрацьовування: "))
-        second_num_for_operation = int(input("Введiть друге число для опрацьовування: "))
+while True:
+        first_num = int(input("Введiть перше число для опрацьовування: "))
+        second_num = int(input("Введiть друге число для опрацьовування: "))
 
         operation = input("Яку операцiї ви бажаєте здiйснити(+, -, *, /, **): ")
 
         if operation == "+":
-              print (first_num_for_operation + second_num_for_operation)
+              print(first_num + second_num)
         elif operation == "-":
-              print (first_num_for_operation - second_num_for_operation)
+              print(first_num - second_num)
         elif operation == "*":
-              print (first_num_for_operation * second_num_for_operation)
+              print(first_num * second_num)
         elif operation == "/":
-              print (first_num_for_operation / second_num_for_operation)
+              if second_num != 0:
+                print(first_num / second_num)
+              else:
+                print("На 0 дiлити заборонено")
+
         elif operation == "**":
-              print (first_num_for_operation ** second_num_for_operation)
+              print(first_num ** second_num)
         else:
               print("Invalid operation")
-        stop_signal = int(input("Якщо ви бажаєте припинити програму введiть '-90' "))
+        stop_signal = input("введiть 'exit' для виходу з програми: ")
+        if stop_signal == "exit":
+              break
 
               
 
 
 #витрати за категорiями
 
-users_balance = float(input("Введiть свiй початковий баланс: "))
+user_balance = float(input("Введiть свiй початковий баланс: "))
 
-spends_balance = {
-
-}
+spends_balance = {}
 
 
 stop_signal = 0
-while stop_signal != "exit":
-    purchase_category = (input("Введiть котигорiю покупок(Наприклад технiка): ")).strip().lower()
-    purchase_money = float(input("Введiть скiльки грошей ви витратили в цiй категорiї: "))
+while True:
+    category = (input("Введiть котигорiю покупок(Наприклад технiка): ")).strip().lower()
+    amount = float(input("Введiть скiльки грошей ви витратили в цiй категорiї: "))
 
-    if users_balance <= 0:
+    if user_balance <= 0:
           print("Вашего баланса недостатньо для проведення операцiї: ")
     else:
-       users_balance -= purchase_money
-       spends_balance[purchase_category] = spends_balance.get(purchase_category , 0) + purchase_money
-       print(spends_balance)
+       if user_balance >= amount:
+        user_balance -= amount
+        spends_balance[category] = spends_balance.get(category , 0) + amount
+        print(spends_balance)
+       else:
+           print("Недостатньо коштiв для проведення операцiї")
        
        stop_signal = input("Введiть 'exit' щоб вийти з циклу: ")
+       if stop_signal == "exit":
+           break
 
 
 
