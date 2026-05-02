@@ -3,16 +3,9 @@ DIGITS = "0123456789"
 SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?/"
 
 
-def validate_email(user_email:str, mask_email: bool ):
-
-    #check email
-    
+def validate_email(user_email:str, mask_email: bool ) -> str:
     if not user_email or not user_email.endswith((".com", ".org", ".ua")) or len(user_email) < 15 or not user_email.count("@") == 1:
         raise  NotImplementedError("Incorrect email")
-    
-    
-    #secret email
-        
     if mask_email == True:
         local_email , domain = user_email.split("@")
         secret_email = local_email[1:-1]
@@ -26,10 +19,9 @@ def validate_email(user_email:str, mask_email: bool ):
 
 
 
-def validate_password(password: str, encrypt_password: bool):
+def validate_password(password: str, encrypt_password: bool) -> str:
     if not password or not any(letters in UPPERCASE_LETTERS for letters in password) or len(password) < 8 or not any(digits in DIGITS for digits in password):
         raise ValueError("Incorrect password")
-
     if encrypt_password == True:
         reversed_password = password[::-1]
         return reversed_password
@@ -41,12 +33,11 @@ def validate_password(password: str, encrypt_password: bool):
 
 
 
-def validate_name(full_name: str, show_only_initials: bool):
+def validate_name(full_name: str, show_only_initials: bool) -> str:
     surname, name = full_name.split()
 
     if not full_name or len(full_name.split()) != 2 or len(surname) < 2 or len(name) < 2:
         raise ValueError("Incorrect FULL name")
-    
     if show_only_initials == True:
         Initials = f"{surname[0]}.{name[0]}"
         return Initials
@@ -58,7 +49,7 @@ def validate_name(full_name: str, show_only_initials: bool):
 
 
 
-def get_user_info():
+def get_user_info() -> tuple[str, str, str]:
 
     user_email = input("enter email: ")
     password = input("enter your password: ")
@@ -72,7 +63,6 @@ def get_user_info():
             mask_email = False
         else:
             raise ValueError("Incorrect email")
-
         encrypt_password_choice = input("Do you want an encrypted password?(y/n)")
         if encrypt_password_choice == "y":
             encrypt_password = True
@@ -80,7 +70,6 @@ def get_user_info():
             encrypt_password = False
         else:
             raise ValueError("Incorrect choice")
-        
         user_initials_choice = input("Do you need your initials?(y/n): ")
         if user_initials_choice == "y":
             show_only_initials = True
@@ -88,19 +77,17 @@ def get_user_info():
             show_only_initials = False
         else:
             raise ValueError("Incorrect choice")
-
         email = validate_email(user_email, mask_email)
         name = validate_name(full_name, show_only_initials)
         user_password = validate_password(password, encrypt_password)
     except ValueError:
         print("Error")
-
     return(name, user_password, email)
 
 
 
 
-def main():
+def main() -> None:
     print("Hello, this program is for your personal data.")
     try:
         name, user_password, email = get_user_info()
