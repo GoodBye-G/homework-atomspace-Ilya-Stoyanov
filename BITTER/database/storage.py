@@ -5,7 +5,8 @@ class User(TypedDict):
     name: str
     posts: list[int]
     followers: list[str]
-    folowwing: list[str]
+    following: list[str]
+
 
 class Post(TypedDict):
     id: int
